@@ -1,23 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import Set from './components/MedicalSet'
+
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function App() {
+
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:8080/medical-set/get-all').then(response => {
+      console.log("Requesting");
+      setPosts(response.data);
+    }).catch(error => {
+      console.error(error);
+    });
+  }, [setPosts]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {posts.map(post => (
+        <Set set={post}></Set>
+      ))}
     </div>
   );
 }
