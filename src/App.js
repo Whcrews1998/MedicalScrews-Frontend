@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     axios.get('http://localhost:8080/medical-set/get-all').then(response => {
-      console.log("Requesting");
+      console.log(response.data);
       setPosts(response.data);
     }).catch(error => {
       console.error(error);
@@ -19,7 +19,7 @@ function App() {
   }, [setPosts]);
 
   return (
-    <div>
+    <div className='App'>
       {posts.map(post => (
         <Set set={post}></Set>
       ))}
