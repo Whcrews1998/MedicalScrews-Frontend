@@ -1,30 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-import Set from './components/MedicalSet'
-
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import './App.css';
+import Set from './components/MedicalSet'
+import Home from "./pages/Home"
+import SetDetails from './pages/SetDetails';
+
+
+
 function App() {
 
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    axios.get('http://localhost:8080/medical-set/get-all').then(response => {
-      console.log(response.data);
-      setPosts(response.data);
-    }).catch(error => {
-      console.error(error);
-    });
-  }, [setPosts]);
-
   return (
-    <div className='App'>
-      {posts.map(post => (
-        <Set set={post}></Set>
-      ))}
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Home/>}/>
+          <Route path="/set-details" element={<SetDetails/>} />
+        </Routes>
+      </BrowserRouter>
     </div>
-  );
+  )
+
+
+
+
 }
 
 export default App;
