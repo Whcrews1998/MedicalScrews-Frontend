@@ -23,13 +23,29 @@ export default function MedicalSet({set}) {
         }));
     }
 
-    
+    function deleteScrew(id) {
+        setScrewList(screwList.filter((screw) => {
+            if (screw.id !== id)
+                return true;
+
+            axios.delete(`http://localhost:8080/medical-set/delete-screw?screwID=${screw.id}`).then(response => {
+                console.log(response.data);
+            }).catch(error => {
+                console.error(error);
+            });
+
+            return false;
+            
+        }));
+    }
+
+
 
     return (
         <div> 
             <div className="set-name"> Set {set.id} </div>
             {screwList.map((screw, index) => (
-                <Screw screw={screw} key={index} togglePresent={togglePresent}/>
+                <Screw screw={screw} key={index} togglePresent={togglePresent} deleteScrew={deleteScrew}/>
             ))}
         </div>
     )
