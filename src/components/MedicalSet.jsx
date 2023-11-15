@@ -43,7 +43,7 @@ export default function MedicalSet({set}) {
 
     return (
         <div> 
-            <div className="set-name"> Set {set.id} </div>
+            <div className="set-name"> {set.name} </div>
             {screwList.map((screw, index) => (
                 <Screw screw={screw} key={index} togglePresent={togglePresent} deleteScrew={deleteScrew}/>
             ))}
