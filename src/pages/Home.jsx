@@ -6,6 +6,7 @@ import Set from "../components/MedicalSet"
 import "./Home.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
     const [medicalSets, setMedicalSets] = useState([]);
@@ -52,13 +53,19 @@ export default function Home() {
         }));
     }
 
+    function editSet() {
+        alert("Functionality not implemented yet...");
+    }
+
     return (
     <div className='App'>        
         {medicalSets.map((set, index) => (
             <div className="set">
                 <div key={index} onClick={() => route(set.id)}>{set.name}</div>
                 {/* <FontAwesomeIcon icon={faTrash} className="delete-button" onClick={() => deleteScrew(screw.id)}/> */}
+                <FontAwesomeIcon className="set-edit-icon" icon={faPenToSquare} onClick={() => editSet()}/>
                 <FontAwesomeIcon className="set-delete-icon" icon={faTrash} onClick={() => deleteSet(set.id)}/>
+                
             </div>
         ))}
         <CreateSet addSet={addSet}/>
