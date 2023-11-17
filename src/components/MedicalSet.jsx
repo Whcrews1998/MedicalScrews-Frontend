@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import "./MedicalSet.css"
 import Screw from "./MedicalScrew"
 
 export default function MedicalSet({set}) {
 
-    const [screwList, setScrewList] = useState(set.screwList);
+    const [screwList, setScrewList] = useState([]);
+
+    useEffect(() => {
+        axios.get(`http://localhost:8080/medical-set?setID=${set.id}`).then(response => {
+            console.log(response.data);
+            setScrewList(response.data.screwList);
+        }).catch(error => {
+            console.error(error);
+        });
+    }, []);
 
     function togglePresent(id){
         setScrewList(screwList.map((screw) => {
