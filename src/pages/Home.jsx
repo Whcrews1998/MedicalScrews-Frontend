@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import {Link, useNavigate} from "react-router-dom";
 import Set from "../components/MedicalSet"
 import "./Home.css"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import { faTrash } from "@fortawesome/free-solid-svg-icons"
 
 export default function Home() {
     const [medicalSets, setMedicalSets] = useState([]);
@@ -34,10 +36,30 @@ export default function Home() {
         });
     }
 
+    function deleteSet(setId) {
+        setMedicalSets(medicalSets.filter((set) => {
+            if (set.id !== setId)
+                return true;
+
+            axios.delete(`http://localhost:8080/medical-set/delete-set?setID=${set.id}`).then(response => {
+                console.log(response.data);
+            }).catch(error => {
+                console.error(error);
+            });
+
+            return false;
+            
+        }));
+    }
+
     return (
     <div className='App'>        
         {medicalSets.map((set, index) => (
-        <div className="set-name" key={index} onClick={() => route(set.id)}>{set.name}</div>
+            <div className="set">
+                <div key={index} onClick={() => route(set.id)}>{set.name}</div>
+                {/* <FontAwesomeIcon icon={faTrash} className="delete-button" onClick={() => deleteScrew(screw.id)}/> */}
+                <FontAwesomeIcon className="set-delete-icon" icon={faTrash} onClick={() => deleteSet(set.id)}/>
+            </div>
         ))}
         <CreateSet addSet={addSet}/>
     </div>

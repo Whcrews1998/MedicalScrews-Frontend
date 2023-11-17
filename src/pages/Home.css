@@ -1,0 +1,10 @@
+.set {
+    background-color: grey;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.set-delete-icon {
+    margin-left: 2%;
+}
