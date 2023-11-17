@@ -8,12 +8,13 @@ import Set from "../components/MedicalSet"
 import "./Home.css"
 
 export default function SetDetails({set}) {
+    
     const location = useLocation();
     const [medicalSet, setMedicalSet] = useState(location.state);
-    
+
     return (
         <div >
-            <Set set={medicalSet}></Set>
+            {location.state == null ? (<div></div>) : (<Set set={medicalSet}></Set>) }
         </div>
     );
 }
