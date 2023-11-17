@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./MedicalSet.css"
 import Screw from "./MedicalScrew"
+import CreateScrew from "./CreateScrew";
 
 export default function MedicalSet({set}) {
 
     const [screwList, setScrewList] = useState([]);
 
     useEffect(() => {
+        console.log(set);
         axios.get(`http://localhost:8080/medical-set?setID=${set.id}`).then(response => {
             console.log(response.data);
             setScrewList(response.data.screwList);
@@ -49,13 +51,13 @@ export default function MedicalSet({set}) {
     }
 
 
-
     return (
         <div> 
             <div className="set-name"> {set.name} </div>
             {screwList.map((screw, index) => (
                 <Screw screw={screw} key={index} togglePresent={togglePresent} deleteScrew={deleteScrew}/>
             ))}
+            <CreateScrew/>
         </div>
     )
 }
