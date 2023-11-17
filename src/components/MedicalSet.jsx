@@ -50,6 +50,15 @@ export default function MedicalSet({set}) {
         }));
     }
 
+    function addScrew(width, length) {
+
+        axios.post(`http://localhost:8080/medical-set/add-screw?setID=${set.id}`, {width: width, length: length, present: true}).then(response => {
+            console.log(response.data);
+            setScrewList(response.data.screwList);
+        }).catch(error => {
+            console.error(error);
+        });
+    }
 
     return (
         <div> 
@@ -57,7 +66,7 @@ export default function MedicalSet({set}) {
             {screwList.map((screw, index) => (
                 <Screw screw={screw} key={index} togglePresent={togglePresent} deleteScrew={deleteScrew}/>
             ))}
-            <CreateScrew/>
+            <CreateScrew addScrew={addScrew}/>
         </div>
     )
 }
