@@ -1,4 +1,5 @@
 import axios from "axios";
+import CreateSet from "../components/CreateSet";
 import { useState, useEffect } from "react";
 import {Link, useNavigate} from "react-router-dom";
 import Set from "../components/MedicalSet"
@@ -25,11 +26,20 @@ export default function Home() {
         navigate('/set-details', {state: setData});
     }
 
+    function addSet(name) {
+        axios.post('http://localhost:8080/medical-set/create', {name: name}).then(response => {
+            setMedicalSets([...medicalSets, response.data]);
+        }).catch(error => {
+            console.error(error);
+        });
+    }
+
     return (
     <div className='App'>        
-        {medicalSets.map(set => (
-        <div className="set-name" onClick={() => route(set.id)}>{set.name}</div>
+        {medicalSets.map((set, index) => (
+        <div className="set-name" key={index} onClick={() => route(set.id)}>{set.name}</div>
         ))}
+        <CreateSet addSet={addSet}/>
     </div>
     );
 }
