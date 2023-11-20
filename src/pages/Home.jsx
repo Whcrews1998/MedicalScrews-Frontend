@@ -59,15 +59,18 @@ export default function Home() {
 
     return (
     <div className='home-page'>
-        {medicalSets.map((set, index) => (
-            <div className="set">
-                <div key={index} onClick={() => route(set.id)}>{set.name}</div>
-                {/* <FontAwesomeIcon icon={faTrash} className="delete-button" onClick={() => deleteScrew(screw.id)}/> */}
-                <FontAwesomeIcon className="set-edit-icon" icon={faPenToSquare} onClick={() => editSet()}/>
-                <FontAwesomeIcon className="set-delete-icon" icon={faTrash} onClick={() => deleteSet(set.id)}/>
-            </div>
-        ))}
-        <CreateSet addSet={addSet}/>
+        <div className="set-list-wrapper">
+            {medicalSets.map((set, index) => (
+                <div className="set">
+                    <div key={index} onClick={() => route(set.id)}>{set.name}</div>
+                    <div className="set-icons">
+                        <FontAwesomeIcon className="set-edit-icon" icon={faPenToSquare} onClick={() => editSet()}/>
+                        <FontAwesomeIcon className="set-delete-icon" icon={faTrash} onClick={() => deleteSet(set.id)}/>
+                    </div>
+                </div>
+            ))}
+            <CreateSet addSet={addSet}/>
+        </div>
     </div>
     );
 }

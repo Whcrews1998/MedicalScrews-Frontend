@@ -1,4 +1,4 @@
-import "./CreateScrew.css"
+import "./CreateSet.css"
 import axios from "axios";
 import { useState, useEffect } from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
@@ -18,9 +18,9 @@ export default function CreateSet({addSet}) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <label>
-                <input type="text" value={name} placeholder="Set name" onChange={(e) => setName(e.target.value)}></input>
-                <button type="submit">Create</button>
+            <label className="create-set-label">
+                <input type="text" className="create-set-input" value={name} placeholder="Set name" onChange={(e) => setName(e.target.value)}></input>
+                <button type="submit" className="create-set-button">Create</button>
             </label>
         </form>
     )

@@ -1,10 +1,37 @@
-.set {
-    background-color: grey;
+.home-page {
+    width: 100vw;
+    height: 100vh;
+    padding: 1%;
+    background-color: #111111;
     display: flex;
-    justify-content: flex-start;
-    align-items: stretch;
+    justify-content: center;
+}
+
+.set-list-wrapper {
+    width: 12rem;
+}
+
+.set {
+    border: 2px;
+    border-style: solid;
+    border-color: #F45B69; 
+    border-radius: 5px;
+
+    margin-bottom: 4%;
+    padding: 4%;
+    background-color: #F6E8EA;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.set-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .set-delete-icon {
-    margin-left: 2%;
+    margin-left: 1rem;
 }

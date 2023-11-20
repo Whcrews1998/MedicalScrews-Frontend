@@ -1,0 +1,25 @@
+.create-set-label {
+    display: flex;
+
+
+}
+
+.create-set-input {
+    outline: none;
+    background: #111111;
+    border: none;
+
+    color: #F6E8EA;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.create-set-input::placeholder {
+    color: #F6E8EA;
+}
+
+.create-set-button {
+    border:none;
+    background: #818479;
+    width: 100%;
+}
