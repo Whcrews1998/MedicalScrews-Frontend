@@ -1,0 +1,15 @@
+.create-screw-form {
+    display: flex;
+    justify-content: flex-start;
+
+    margin-top: 1rem;
+}
+
+.create-screw-label {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.create-screw-label input{
+    width: 100%;
+}

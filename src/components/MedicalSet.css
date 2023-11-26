@@ -1,6 +1,12 @@
-.set-name {
+.name {
     background-color: grey;
     color: rgb(238, 235, 230);
-    margin-top: 10px;
-    margin-bottom: 0;
+    padding-left: 1%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.screw-list {
+    width: 20rem;
+    justify-content: center;
 }

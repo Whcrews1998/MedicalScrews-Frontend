@@ -7,13 +7,15 @@ import "./Home.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import details from "../configuration/ServerDetails"
 
 export default function Home() {
+    console.log(details);
     const [medicalSets, setMedicalSets] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('http://localhost:8080/medical-set/get-all').then(response => {
+        axios.get(`http://${details.url}:${details.port}/medical-set/get-all`).then(response => {
             setMedicalSets(response.data);
         }).catch(error => {
             console.error(error);
@@ -30,7 +32,7 @@ export default function Home() {
     }
 
     function addSet(name) {
-        axios.post('http://localhost:8080/medical-set/create', {name: name}).then(response => {
+        axios.post(`http://localhost:8081/medical-set/create`, {name: name}).then(response => {
             setMedicalSets([...medicalSets, response.data]);
         }).catch(error => {
             console.error(error);
