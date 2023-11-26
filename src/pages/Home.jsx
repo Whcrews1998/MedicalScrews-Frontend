@@ -32,7 +32,7 @@ export default function Home() {
     }
 
     function addSet(name) {
-        axios.post(`http://localhost:8081/medical-set/create`, {name: name}).then(response => {
+        axios.post(`http://${details.url}:${details.port}/medical-set/create`, {name: name}).then(response => {
             setMedicalSets([...medicalSets, response.data]);
         }).catch(error => {
             console.error(error);
@@ -44,7 +44,7 @@ export default function Home() {
             if (set.id !== setId)
                 return true;
 
-            axios.delete(`http://localhost:8080/medical-set/delete-set?setID=${set.id}`).then(response => {
+            axios.delete(`http://${details.url}:${details.port}/medical-set/delete-set?setID=${set.id}`).then(response => {
                 console.log(response.data);
             }).catch(error => {
                 console.error(error);
