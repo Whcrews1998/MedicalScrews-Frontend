@@ -15,7 +15,7 @@ export default function Home() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://${details.url}/medical-set/get-all`).then(response => {
+        axios.get(`https://${details.url}/medical-set/get-all`).then(response => {
             setMedicalSets(response.data);
         }).catch(error => {
             console.error(error);
@@ -32,7 +32,7 @@ export default function Home() {
     }
 
     function addSet(name) {
-        axios.post(`http://${details.url}/medical-set/create`, {name: name}).then(response => {
+        axios.post(`https://${details.url}/medical-set/create`, {name: name}).then(response => {
             setMedicalSets([...medicalSets, response.data]);
         }).catch(error => {
             console.error(error);
@@ -44,7 +44,7 @@ export default function Home() {
             if (set.id !== setId)
                 return true;
 
-            axios.delete(`http://${details.url}/medical-set/delete-set?setID=${set.id}`).then(response => {
+            axios.delete(`https://${details.url}/medical-set/delete-set?setID=${set.id}`).then(response => {
                 console.log(response.data);
             }).catch(error => {
                 console.error(error);
