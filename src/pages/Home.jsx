@@ -7,7 +7,7 @@ import "./Home.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import details from "../configuration/ServerDetails"
+import details from "../configuration/ServerDetails";
 
 export default function Home() {
     console.log(details);
@@ -15,7 +15,7 @@ export default function Home() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://${details.url}:${details.port}/medical-set/get-all`).then(response => {
+        axios.get(`http://${details.url}/medical-set/get-all`).then(response => {
             setMedicalSets(response.data);
         }).catch(error => {
             console.error(error);
@@ -32,7 +32,7 @@ export default function Home() {
     }
 
     function addSet(name) {
-        axios.post(`http://localhost:8081/medical-set/create`, {name: name}).then(response => {
+        axios.post(`http://${details.url}/medical-set/create`, {name: name}).then(response => {
             setMedicalSets([...medicalSets, response.data]);
         }).catch(error => {
             console.error(error);
@@ -44,7 +44,7 @@ export default function Home() {
             if (set.id !== setId)
                 return true;
 
-            axios.delete(`http://localhost:8080/medical-set/delete-set?setID=${set.id}`).then(response => {
+            axios.delete(`http://${details.url}/medical-set/delete-set?setID=${set.id}`).then(response => {
                 console.log(response.data);
             }).catch(error => {
                 console.error(error);
