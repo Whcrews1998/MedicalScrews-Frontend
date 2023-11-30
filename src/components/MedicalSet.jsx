@@ -11,7 +11,7 @@ export default function MedicalSet({set}) {
 
     useEffect(() => {
         console.log(set);
-        axios.get(`https://${details.url}/medical-set?setID=${set.id}`).then(response => {
+        axios.get(`${details.url}/medical-set?setID=${set.id}`).then(response => {
             console.log(response.data);
             setScrewList(response.data.screwList);
         }).catch(error => {
@@ -23,7 +23,7 @@ export default function MedicalSet({set}) {
         setScrewList(screwList.map((screw) => {
             
             if (screw.id === id) {
-                axios.post(`https://${details.url}/medical-set/update-present-state?id=${screw.id}&newState=${screw.present ? false:true}`).then(response => {
+                axios.post(`${details.url}/medical-set/update-present-state?id=${screw.id}&newState=${screw.present ? false:true}`).then(response => {
                     console.log(response.data);
                 }).catch(error => {
                     console.error(error);
@@ -40,7 +40,7 @@ export default function MedicalSet({set}) {
             if (screw.id !== id)
                 return true;
 
-            axios.delete(`https://${details.url}/medical-set/delete-screw?screwID=${screw.id}`).then(response => {
+            axios.delete(`${details.url}/medical-set/delete-screw?screwID=${screw.id}`).then(response => {
                 console.log(response.data);
             }).catch(error => {
                 console.error(error);
@@ -53,7 +53,7 @@ export default function MedicalSet({set}) {
 
     function addScrew(width, length) {
 
-        axios.post(`https://${details.url}/medical-set/add-screw?setID=${set.id}`, {width: width, length: length, present: true}).then(response => {
+        axios.post(`${details.url}/medical-set/add-screw?setID=${set.id}`, {width: width, length: length, present: true}).then(response => {
             console.log(response.data);
             setScrewList(response.data.screwList);
         }).catch(error => {
