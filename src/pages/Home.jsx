@@ -15,7 +15,7 @@ export default function Home() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`https://${details.url}/medical-set/get-all`).then(response => {
+        axios.get(`${details.url}/medical-set/get-all`).then(response => {
             setMedicalSets(response.data);
         }).catch(error => {
             console.error(error);
