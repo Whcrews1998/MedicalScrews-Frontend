@@ -1,5 +1,6 @@
 .screw-present {
-    color: #F6E8EA;
+    background-color: rgb(29, 189, 90);
+    color: white;
 }
 
 .screw-missing {
