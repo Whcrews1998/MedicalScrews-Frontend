@@ -10,6 +10,10 @@ export default function CreateScrew({addScrew}) {
     const [width, setWidth] = useState(0);
     const [length, setLength] = useState(0);
 
+    function isDecimal(num) {
+        return (num % 1);
+    }
+
     function handleSubmit(e) {
         e.preventDefault();
 
@@ -18,6 +22,11 @@ export default function CreateScrew({addScrew}) {
 
         if (width == 0 || length == 0) {
             alert("Measurments may not be zero.");
+            return false;
+        }
+
+        if (!Number.isInteger(length)) {
+            alert("Length cannot be a decimal.");
             return false;
         }
 
