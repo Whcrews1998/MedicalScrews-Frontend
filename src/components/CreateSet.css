@@ -33,3 +33,6 @@ input[type="search"] {
     -webkit-appearance: none;
 }
 /* -------------------------------------------------- */
+
+/* Removes highlight from input when clicked */
+input:focus {outline:none;}
