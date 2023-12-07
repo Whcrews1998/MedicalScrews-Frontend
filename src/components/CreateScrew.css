@@ -10,6 +10,11 @@
     justify-content: flex-start;
 }
 
-.create-screw-label input{
+.create-screw-label input {
     width: 100%;
+}
+
+.create-screw-label button{
+    border-radius: 0;
+    border: 1px outset blue;
 }

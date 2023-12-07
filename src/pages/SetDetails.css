@@ -1,9 +1,8 @@
 .set-details-page {
     width: 100vw;
     height: 100vh;
-    padding: 1rem;
+    padding: 1rem 0 0 0;
     background-color: #111111;
     display: flex;
     justify-content: center;
-
 }
