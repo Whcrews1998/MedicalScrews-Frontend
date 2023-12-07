@@ -1,21 +1,21 @@
 .create-set-label {
     display: flex;
 
-
+    outline: 1px solid black;
+    background: #111111;
 }
 
 .create-set-input {
-    outline: none;
-    background: #111111;
+
     border: none;
 
-    color: #F6E8EA;
+    color: black;
     padding-top: 3%;
     padding-bottom: 3%;
 }
 
 .create-set-input::placeholder {
-    color: #F6E8EA;
+    color: #a5a5a5;
 }
 
 .create-set-button {
@@ -23,3 +23,13 @@
     background: #818479;
     width: 100%;
 }
+
+/* Used to removed default rounded inputs from mobile */
+input {
+    border-radius: 0;
+}
+
+input[type="search"] {
+    -webkit-appearance: none;
+}
+/* -------------------------------------------------- */
