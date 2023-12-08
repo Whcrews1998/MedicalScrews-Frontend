@@ -39,7 +39,7 @@ export default function CreateScrew({addScrew}) {
         <form className="create-screw-form" onSubmit={handleSubmit}>
             <label className="create-screw-label">
                 <input type="text" placeholder="width" onChange={(e) => setWidth(e.target.value)}></input>
-                <input type="text" placeholder="length" onChange={(e) => setLength(e.target.value)}></input>
+                <input type="number" placeholder="length" onChange={(e) => setLength(e.target.valueAsNumber)}></input>
                 <button type="submit">Create</button>
             </label>
         </form>
