@@ -32,7 +32,6 @@ export default function CreateScrew({addScrew}) {
 
         addScrew(width, length);
 
-        
     }
 
     return (
