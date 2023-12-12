@@ -1,4 +1,4 @@
 export default {
-    url: " https://api.whcrews.com",
+    url: " https://dev-api.whcrews.com",
     port: 8081
 };
