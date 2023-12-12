@@ -3,9 +3,13 @@
 }
 
 html {
- overflow-x:hidden ;
+ overflow-x:hidden;
+ overflow-y: auto;
+ background-color: #111111;
 }
 
 body {
   position: relative;
+  overflow-x:hidden;
+  overflow-y: auto;
 }
